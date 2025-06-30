@@ -96,10 +96,14 @@ namespace SimpleJournalApp.Infrastructure.Service
 
         public async Task DeleteAsync(int id)
         {
-            var entry = await _context.JournalEntry.FindAsync(id);
+            var entry = await _context.JournalEntry
+                    .FromSqlRaw("EXEC sp_GetJournalEntryById @p0", id)
+                    .ToListAsync(); 
+
             if (entry != null)
             {
-                _context.JournalEntry.Remove(entry);
+                await _context.Database.ExecuteSqlRawAsync(
+                     "EXEC sp_deleteJournalEntry @p0", id);
                 await _context.SaveChangesAsync();
             }
         }
