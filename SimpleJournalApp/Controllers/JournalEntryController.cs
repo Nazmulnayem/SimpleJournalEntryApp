@@ -22,10 +22,17 @@ public class JournalEntryController : ControllerBase
     public async Task<IActionResult> Get(int id) => Ok(await _service.GetByIdAsync(id));
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] JournalEntry entry)
+    public async Task<IActionResult> Post([FromBody] List<JournalEntry> entries)
     {
-        await _service.CreateAsync(entry);
-        return Ok();
+
+        if (entries.Sum(x => x.DebitAmount) != entries.Sum(x => x.CreditAmount))
+            return BadRequest("Debits and Credits must be equal");
+
+        await _service.CreateAsync(entries);
+            return Ok();
+        
+        
+
     }
 
     [HttpPut("{id}")]

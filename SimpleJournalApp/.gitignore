@@ -1,0 +1,84 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# VS Code
+.vscode/
+
+# VS for Mac
+.idea/
+*.sln.iml
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Visual Studio working folder
+.vs/
+
+# Rider IDE
+.idea/
+
+# Others
+*.dbmdl
+*.bak
+*.cache
+*.log
+*.vspscc
+*.vssscc
+
+# User secrets
+**/secrets.json
+
+# dotnet watch & other temp
+**/Properties/launchSettings.json
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# Logs
+*.log
+
+# npm packages
+node_modules/
+
+# JetBrains Rider
+.idea/
+
+# Docker files (optional if used)
+docker-compose.override.yml
+
+# EF Core Migrations snapshot
+**/Migrations/*Snapshot.cs
+
+# OS generated files
+ehthumbs.db
+Icon?
+Thumbs.db
+Desktop.ini
+
+# Recycle bin files
+$RECYCLE.BIN/
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Others
+*.swp
+*.swo

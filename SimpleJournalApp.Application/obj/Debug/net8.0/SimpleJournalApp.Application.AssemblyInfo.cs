@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleJournalApp.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad9ba2df46da79b9ddf6cd235148decaf8b816e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7aac5f089302ba71cee49d9519832ee6b8ed27d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleJournalApp.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleJournalApp.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

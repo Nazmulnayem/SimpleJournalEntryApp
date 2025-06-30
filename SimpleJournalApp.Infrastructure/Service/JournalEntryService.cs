@@ -22,15 +22,7 @@ namespace SimpleJournalApp.Infrastructure.Service
         {
             try
             {
-                //var parameters = new[]
-                //        {
-                //            new SqlParameter("p_corpId", SqlDbType.BigInt) { Value = officeId ?? (object)DBNull.Value },
-                //            new SqlParameter("p_branchId", SqlDbType.BigInt) { Value = branchId ?? (object)DBNull.Value },
-                //            new SqlParameter("p_boothId", SqlDbType.Int) { Value = boothId ?? (object)DBNull.Value },
-                //            new SqlParameter("p_assetId", SqlDbType.Int) { Value = assetId ?? (object)DBNull.Value },
 
-                //        };
-                //var data = await _connection.ScheduleDataDto.FromSqlRaw("SELECT * FROM get_schedule_data_set({0}, {1}, {2}, {3})", parameters).ToListAsync();
 
                 return await _context.JournalEntry.FromSqlRaw("EXEC sp_GetAllJournalEntries").ToListAsync();
             }
@@ -44,38 +36,38 @@ namespace SimpleJournalApp.Infrastructure.Service
 
         public async Task<JournalEntry> GetByIdAsync(int id)
         {
-
             try
             {
-                var result = await _context.JournalEntry.FirstOrDefaultAsync(i => i.Id == id);
-                return result ?? new JournalEntry();
+                var result = await _context.JournalEntry
+                    .FromSqlRaw("EXEC sp_GetJournalEntryById @p0", id)
+                    .ToListAsync();
+
+                return result.FirstOrDefault() ?? new JournalEntry();
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"Error fetching journal entry by ID: {ex.Message}", ex);
             }
         }
 
         public async Task CreateAsync(List<JournalEntry> entries)
         {
-            List<JournalEntry> vars = new List<JournalEntry>();
 
-            foreach (var item in entries)
-            {
-                var result = new JournalEntry
-                {
-                    Id = item.Id,
-                    DebitAmount = item.DebitAmount,
-                    CreditAmount = item.CreditAmount,
-                   
-                };
-
-                vars.Add(result);
-            }
 
             try
             {
-                await _context.JournalEntry.AddRangeAsync(vars);
+                // List<JournalEntry> vars = new List<JournalEntry>();
+
+                foreach (var entry in entries)
+                {
+                    await _context.Database.ExecuteSqlRawAsync(
+                        "EXEC sp_InsertJournalEntry @p0, @p1, @p2, @p3",
+                        entry.EntryDate,
+                        entry.Description,
+                        entry.DebitAmount,
+                        entry.CreditAmount
+                    );
+                }
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -86,8 +78,22 @@ namespace SimpleJournalApp.Infrastructure.Service
 
         public async Task UpdateAsync(JournalEntry entry)
         {
-            _context.JournalEntry.Update(entry);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.Database.ExecuteSqlRawAsync(
+                    "EXEC sp_UpdateJournalEntry @p0, @p1, @p2, @p3,@p4",
+                    entry.Id,
+                    entry.EntryDate,
+                    entry.Description,
+                    entry.DebitAmount,
+                    entry.CreditAmount
+                );
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error Updating journal entries: " + ex.Message);
+            }
         }
 
         public async Task DeleteAsync(int id)

@@ -14,6 +14,6 @@ namespace SimpleJournalApp.Application.Interface
         Task CreateAsync(List<JournalEntry> entries);
         Task UpdateAsync(JournalEntry entry);
         Task DeleteAsync(int id);
-        Task CreateAsync(JournalEntry entry);
+
     }
 }
