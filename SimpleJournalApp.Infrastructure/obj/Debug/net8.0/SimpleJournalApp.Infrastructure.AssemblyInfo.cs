@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleJournalApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7aac5f089302ba71cee49d9519832ee6b8ed27d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+388cf48b2b333a71dddfcc2239b30bd505ab6339")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleJournalApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleJournalApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

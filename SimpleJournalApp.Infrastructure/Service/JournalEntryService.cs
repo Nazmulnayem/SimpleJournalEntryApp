@@ -23,14 +23,12 @@ namespace SimpleJournalApp.Infrastructure.Service
             try
             {
 
-
                 return await _context.JournalEntry.FromSqlRaw("EXEC sp_GetAllJournalEntries").ToListAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
 
         }
 
