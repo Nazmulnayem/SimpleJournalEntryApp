@@ -1,5 +1,7 @@
 ﻿using SimpleJournalApp.Application.Interface;
 using SimpleJournalApp.Infrastructure.Service;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace SimpleJournalApp.WebAPI.Utility
 {

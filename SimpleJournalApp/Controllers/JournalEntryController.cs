@@ -4,6 +4,7 @@ using SimpleJournalApp.Domain.Entities;
 using SimpleJournalApp.Application.Interface;
 
 namespace SimpleJournalApp.WebAPI.Controllers;
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class JournalEntryController : ControllerBase
