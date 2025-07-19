@@ -11,7 +11,8 @@ namespace SimpleJournalApp.WebAPI.Utility
         {
             services.AddHttpContextAccessor();
             services.AddScoped<IJournalEntryService, JournalEntryService>();
-            
+            services.AddScoped<UserService>();
+
 
         }
     }

@@ -53,5 +53,20 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
+//    if (!context.Users.Any(u => u.Username == "admin"))
+//    {
+//        var hashed = BCrypt.Net.BCrypt.HashPassword("1234");
+//        context.Users.Add(new AppUser
+//        {
+//            Username = "admin",
+//            PasswordHash = hashed,
+//            Role = "Admin"
+//        });
+//        context.SaveChanges();
+//    }
+//}
 app.Run();

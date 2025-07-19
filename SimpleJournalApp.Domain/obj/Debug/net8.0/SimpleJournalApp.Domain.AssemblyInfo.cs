@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleJournalApp.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd727e3d068e633bc0d93c81a4d91abebc807417")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90ed731e2ba2a3d4bac3d727a5c3ef36721bf57c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleJournalApp.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleJournalApp.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
